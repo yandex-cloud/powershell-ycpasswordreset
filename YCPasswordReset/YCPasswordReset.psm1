@@ -45,7 +45,7 @@ function ConvertTo-Unixtime {
         [datetime]$Date
     )
 
-    $Epoch = [int64]([double]::Parse((Get-Date -Date ($Date) -UFormat "%s"),[CultureInfo][System.Threading.Thread]::CurrentThread.CurrentCulture))
+    $Epoch = [int64]([double]::Parse((Get-Date -Date ($Date.ToUniversalTime()) -UFormat "%s"),[CultureInfo][System.Threading.Thread]::CurrentThread.CurrentCulture))
 
     return $Epoch
 }
